@@ -1,7 +1,7 @@
 package com.logicalgeekboy.logical_zoom.mixin;
 
 import com.logicalgeekboy.logical_zoom.LogicalZoom;
-import com.llamalad7.mixinextras.injector.WrapWithCondition;
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;

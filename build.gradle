@@ -38,6 +38,9 @@ processResources {
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 26.1 upwards uses Java 25.
 	it.options.release = 25
+
+	// Show deprecated API usage with file and line numbers
+	it.options.compilerArgs += ['-Xlint:deprecation']
 }
 
 java {

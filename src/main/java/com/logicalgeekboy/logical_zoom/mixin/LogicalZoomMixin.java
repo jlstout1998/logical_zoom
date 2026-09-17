@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.state.level.PlayerRenderState;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.state.level.FirstPersonHandsAndItemsRenderState;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +37,7 @@ public class LogicalZoomMixin {
             method = "renderItemInHand",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/renderer/FirstPersonHandsAndItemsRenderer;submitHandsWithItems(FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/PlayerRenderState;I)V"
+                    target = "Lnet/minecraft/client/renderer/FirstPersonHandsAndItemsRenderer;submitHandsWithItems(FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/PlayerRenderState;Lnet/minecraft/client/renderer/state/level/FirstPersonHandsAndItemsRenderState;I)V"
             )
     )
     private boolean logicalZoom$hideHandsWhenZooming(
@@ -45,6 +46,7 @@ public class LogicalZoomMixin {
             PoseStack poseStack,
             SubmitNodeCollector submitNodeCollector,
             PlayerRenderState playerstate,
+            FirstPersonHandsAndItemsRenderState state,
             int packedLight
     ) {
         return !(LogicalZoom.isZooming()

@@ -6,7 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.ItemInHandRenderer;
+import net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
@@ -36,11 +36,11 @@ public class LogicalZoomMixin {
             method = "renderItemInHand",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/renderer/ItemInHandRenderer;submitHandsWithItems(FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/player/LocalPlayer;I)V"
+                    target = "Lnet/minecraft/client/renderer/FirstPersonHandsAndItemsRenderer;submitHandsWithItems(FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/player/LocalPlayer;I)V"
             )
     )
     private boolean logicalZoom$hideHandsWhenZooming(
-            ItemInHandRenderer itemInHandRenderer,
+            FirstPersonHandsAndItemsRenderer firstPersonHandsAndItemsRenderer,
             float deltaPartialTick,
             PoseStack poseStack,
             SubmitNodeCollector submitNodeCollector,

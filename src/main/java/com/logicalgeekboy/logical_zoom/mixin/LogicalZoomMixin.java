@@ -4,7 +4,7 @@ import com.logicalgeekboy.logical_zoom.LogicalZoom;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.state.level.PlayerRenderState;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -36,7 +36,7 @@ public class LogicalZoomMixin {
             method = "renderItemInHand",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/renderer/FirstPersonHandsAndItemsRenderer;submitHandsWithItems(FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/player/LocalPlayer;I)V"
+                    target = "Lnet/minecraft/client/renderer/FirstPersonHandsAndItemsRenderer;submitHandsWithItems(FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/PlayerRenderState;I)V"
             )
     )
     private boolean logicalZoom$hideHandsWhenZooming(
@@ -44,7 +44,7 @@ public class LogicalZoomMixin {
             float deltaPartialTick,
             PoseStack poseStack,
             SubmitNodeCollector submitNodeCollector,
-            LocalPlayer player,
+            PlayerRenderState playerstate,
             int packedLight
     ) {
         return !(LogicalZoom.isZooming()

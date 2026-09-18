@@ -46,8 +46,7 @@ public class LogicalZoomMixin {
             PoseStack poseStack,
             SubmitNodeCollector submitNodeCollector,
             PlayerRenderState playerstate,
-            FirstPersonHandsAndItemsRenderState state,
-            int packedLight
+            FirstPersonHandsAndItemsRenderState state
     ) {
         return !(LogicalZoom.isZooming()
                 && Minecraft.getInstance().options.getCameraType().isFirstPerson());
